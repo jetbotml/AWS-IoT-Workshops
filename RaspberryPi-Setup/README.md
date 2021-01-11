@@ -47,11 +47,6 @@ sudo shutdown now
 After restarting your pi, ssh to you pi and enter the following commands - one at a time
 
 ```bash
-export AWS_DEFAULT_REGION=<your preferred region, i.e. us-east-1>
-export STACK_NAME=<a unique name for your CloudFormation stack>
-./deploy.sh
-```
-```bash
 sudo dpkg-reconfigure tzdata
 ```
 
