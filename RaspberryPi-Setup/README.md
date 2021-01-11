@@ -8,16 +8,18 @@ Use Etcher to flash image to an SD card - https://www.balena.io/etcher/
 
 Once card is flashed, copy your wpa_supplicant.conf file to the boot drive of the new image. 
 
-	Txt file name must be wpa_supplicant.conf 
+Txt file name must be wpa_supplicant.conf 
 
-	country=US
-	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-	update_config=1
+```bash
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
 	
-	network={
-	    ssid="yourwifissid"
-	    psk="yourwifipassword"
+network={
+	ssid="yourwifissid"
+	psk="yourwifipassword"
 	}
+```
 
 Boot up your raspberry pi
 	Need a monitor, mouse and power
@@ -44,23 +46,41 @@ sudo shutdown now
 
 After restarting your pi, ssh to you pi and enter the following commands - one at a time
 
+```bash
+export AWS_DEFAULT_REGION=<your preferred region, i.e. us-east-1>
+export STACK_NAME=<a unique name for your CloudFormation stack>
+./deploy.sh
+```
+```bash
 sudo dpkg-reconfigure tzdata
+```
 
+```bash
 sudo apt-get update
+```
 
+```bash
 sudo apt-get upgrade -y
+```
 
+```bash
 sudo apt-get install python3 git python3-pip libgpiod2 python3-gpiozero -y
+```
 
+```bash
 sudo pip3 install RPI.GPIO adafruit-blinka adafruit-circuitpython-dht AWSIoTPythonSDK
+```
 
-The following will set python 3 as default
+```bash
 sudo update-alternatives --install /usr/bin/python python $(which python2) 1
 sudo update-alternatives --install /usr/bin/python python $(which python3) 2
 sudo update-alternatives --config python
+```
 
 
-Test the setup
+
+Test the setup run 
+```bash
 sudo python dht_simpletest.py
-
+```
 Next - Configure AWS IoT
