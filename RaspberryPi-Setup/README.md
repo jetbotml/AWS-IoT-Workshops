@@ -1,0 +1,1 @@
+# Raspberry Pi SD Card steps for AWS IoT and DHT22 sensor
