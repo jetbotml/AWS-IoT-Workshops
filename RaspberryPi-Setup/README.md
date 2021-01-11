@@ -2,14 +2,13 @@
 
 
 Download latest Raspberry Pi OS Lite from  https://www.raspberrypi.org/software/operating-systems/
-2020-12-02-raspios-buster-armhf-lite.zip 
+- 2020-12-02-raspios-buster-armhf-lite.zip 
 
 Use Etcher to flash image to an SD card - https://www.balena.io/etcher/
 
-Once card is flashed, copy your wpa_supplicant.conf file to the boot drive of the new image. 
+Once card is flashed, copy a wpa_supplicant.conf file to the boot drive of the new image. 
 
-Txt file name must be wpa_supplicant.conf 
-
+wpa_supplicant.conf txt file structure
 ```bash
 country=US
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -18,11 +17,10 @@ update_config=1
 network={
 	ssid="yourwifissid"
 	psk="yourwifipassword"
-	}
+}
 ```
 
-Boot up your raspberry pi
-	Need a monitor, mouse and power
+Boot up your raspberry pi with a monitor, and keyboard
 	
 Log into your raspberry pi
 	Default account
@@ -30,10 +28,13 @@ Log into your raspberry pi
 	Default password: raspberry
 
 Run raspi config to set password, hostname and turn on ssh. You can also set the wifi and password here too
+
+```bash
 sudo raspi-config 
-	System options - set password and hostname
-	Interface options - enable SSH
-	Finish and reboot
+```
+*System options* - set password and hostname
+*Interface options* - enable SSH
+Finish and reboot
 
 After boot the display will show the IP of the pi.
 You can also find it with this command
